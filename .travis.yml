@@ -1,0 +1,30 @@
+language: cpp
+dist: xenial
+sudo: false
+
+compiler:
+  - gcc
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-7
+      - cmake
+
+env:
+  global:
+    - LOCAL_INSTALL="$HOME/local"
+    - EIGEN3_ROOT_DIR=${LOCAL_INSTALL}/eigen3
+
+cache:
+  directories:
+    - $LOCAL_INSTALL
+
+before_install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-7" && export CC="gcc-7"
+
+install:
+  - $TRAVIS_BUILD_DIR/scripts/travis-install-dependencies.sh $LOCAL_INSTALL
+  - export PATH=${LOCAL_INSTALL}/cmake/bin:${LOCAL_INSTALL}/bin:${PATH}
