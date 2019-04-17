@@ -23,7 +23,7 @@ cache:
     - $LOCAL_INSTALL
 
 before_install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-7" && export CC="gcc-7"
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-7" && export CC="gcc-7"; fi
 
 install:
   - $TRAVIS_BUILD_DIR/scripts/travis-install-dependencies.sh $LOCAL_INSTALL
