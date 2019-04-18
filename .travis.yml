@@ -4,6 +4,7 @@ sudo: false
 
 compiler:
   - gcc
+  - clang
 
 addons:
   apt:
@@ -16,13 +17,14 @@ env:
   global:
     - LOCAL_INSTALL="$HOME/local"
     - Eigen3_ROOT=${LOCAL_INSTALL}/eigen3
+    - CXXFLAGS="-Wall -Wextra -Wno-unused-parameter"
 
 cache:
   directories:
     - $LOCAL_INSTALL
 
 before_install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-7" && export CC="gcc-7"; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-7" && export CC="gcc-7" && export CXXFLAGS="$CXXFLAGS -Wno-literal-suffix"; fi
 
 install:
   - $TRAVIS_BUILD_DIR/scripts/travis-install-dependencies.sh $LOCAL_INSTALL
