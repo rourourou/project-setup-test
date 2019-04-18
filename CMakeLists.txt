@@ -14,8 +14,8 @@ if(POLICY CMP0074)
     cmake_policy(SET CMP0074 NEW)
 endif()
 
-set(EIGEN3_ROOT_DIR "/HTOpt/libs/eigen/3.3.4")
-set(EIGEN3_ROOT "/HTOpt/libs/eigen/3.3.4")
+list (APPEND EIGEN3_ROOT_DIR "/HTOpt/libs/eigen/3.3.4")
+list (APPEND EIGEN3_ROOT "/HTOpt/libs/eigen/3.3.4")
 find_package(Eigen3 3.3 REQUIRED)
 
 set(CMAKE_CXX_STANDARD 14)
