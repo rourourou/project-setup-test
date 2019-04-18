@@ -11,12 +11,11 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-7
-      - cmake
 
 env:
   global:
     - LOCAL_INSTALL="$HOME/local"
-    - EIGEN3_ROOT_DIR=${LOCAL_INSTALL}/eigen3
+    - Eigen3_ROOT=${LOCAL_INSTALL}/eigen3
 
 cache:
   directories:
